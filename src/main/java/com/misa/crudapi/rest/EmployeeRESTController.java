@@ -29,6 +29,6 @@ public class EmployeeRESTController {
 	
 	@GetMapping("/employees")
 	public List<Employee> list(){
-		return employeeDAO.findAdd();
+		return employeeDAO.findAll();
 	}
 }
