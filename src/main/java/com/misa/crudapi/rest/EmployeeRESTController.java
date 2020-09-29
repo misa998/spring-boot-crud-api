@@ -7,19 +7,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.misa.crudapi.dao.EmployeeDAO;
 import com.misa.crudapi.entity.Employee;
+import com.misa.crudapi.service.EmployeeService;
 
 @RestController
 @RequestMapping("/api")
 public class EmployeeRESTController {
 	
-	private EmployeeDAO employeeDAO;
+	private EmployeeService employeeService;
 	
-	// inject employee dao
+	// inject employee service
 	@Autowired
-	public EmployeeRESTController(EmployeeDAO employeeDAO) {
-		this.employeeDAO = employeeDAO;
+	public EmployeeRESTController(EmployeeService employeeService) {
+		this.employeeService = employeeService;
 	}
 	
 	@GetMapping("/")
@@ -29,6 +29,6 @@ public class EmployeeRESTController {
 	
 	@GetMapping("/employees")
 	public List<Employee> list(){
-		return employeeDAO.findAll();
+		return employeeService.findAll();
 	}
 }
